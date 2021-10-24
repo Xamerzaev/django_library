@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <section class="site-section py-lg">
+      <div class="container">
+        <div class="row blog-entries">
+          <div class="col-md-12 col-lg-8 main-content">
+            <h1 class="mb-4">{{ post.title }}</h1>
+            <div class="post-meta">
+                        <span class="mr-2">{{ post.author }}</span>
+                      </div>
+            <div class="post-content-body">
+            <div class="row mb-5">
+              <div class="col-md-12 mb-4 element-animate">
+                <img class="img-fluid" src="{{ url_for('static', filename='images/' + post.image) }}" width="50%" height="50%" alt="">
+              </div>
+            </div>
+            <p>{{ post.content}}</p>
+            </div>
+
+
+            <div class="pt-5">
+              <h4 class="mb-5">{{post.comments|length}} комментарий</h4>
+              {% for comment in comments %}
+              <ul class="comment-list">
+                <li class="comment">
+                  <div class="comment-body">
+                    <h3>{{ comment.subject }}</h3>
+                    <div class="meta">{{ post.date_posted.strftime('%Y-%m-%d %H:%M') }}</div>
+                    <h6>Имя: {{ comment.name }}</h6>
+                    <p>Комментарий: {{comment.message}} </p>
+                  </div>
+                </li>
+              </ul>
+              {% endfor %}
+              <!-- END comment-list -->
+              
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">Ваш комментарий</h3>
+                {% if current_user.is_authenticated %}
+                <form action="" class="p-5 bg-light"  method="post">
+                  <div class="form-group">
+                    <label for="name">Ваше имя *</label>
+                    <input type="text" class="form-control" name="name" id="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="subject">Заголовок *</label>
+                    <input type="text" class="form-control" name="subject" id="name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control" name="email" id="email">
+                  </div>
+                  <div class="form-group">
+                    <label for="message">Комментарий</label>
+                    <textarea   type="text" name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" value="Отправить комментарий" class="btn btn-primary">
+                  </div>
+                  {% else %}
+                 <a href="{{url_for('sign_up')}}">Для добавления комментария сделайте Вход или Регистрацию!!!</a>
+          {% endif %}
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% endblock %}

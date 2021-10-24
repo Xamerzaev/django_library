@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="" method="POST" enctype="multipart/form-data" class="form">
+  {{ form.hidden_tag() }}
+<section class="contact_section layout_padding">
+  <div class="container ">
+    <div class="heading_container">
+      <h2 class="">
+        Добавление поста
+      </h2>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+
+        {% if form.title.errors %}
+                {{ form.title(class="form-control form-control-lg is-invalid", placeholder='Название еды') }}
+                <div class="invalid-feedback">
+                  {% for error in form.email.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.title(class="form-control form-control-lg", placeholder='Название еды') }}
+                {% endif %}
+        
+  
+        {% if form.content.errors %}
+                {{ form.content(class="form-control form-control-lg is-invalid", placeholder='Подробный рецепт') }}
+                <div class="invalid-feedback">
+                  {% for error in form.content.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.content(class="form-control form-control-lg", placeholder='Подробный рецепт') }}
+                {% endif %}
+        
+        {% if form.image.errors %}
+                {{ form.image(class="form-control form-control-lg is-invalid", placeholder='Изображение') }}
+                <div class="invalid-feedback">
+                  {% for error in form.image.errors %}
+                  <span>{{ error }}</span>
+                  {% endfor %}
+                </div>
+                {% else %}
+                {{ form.image(class="form-control form-control-lg", placeholder='Изображение') }}
+                {% endif %}
+    
+      {{ form.submit(class='registerbtn', placeholder='Отправить') }}
+      </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</form>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{%block content%}
+
+<form action="" method="POST" enctype="multipart/form-data" class="form">
+    <section class="contact_section layout_padding">
+      <div class="container ">
+        <div class="heading_container">
+          <h2 class="">
+          Вход
+        </h2>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <form action="">
+            <div>
+              <input type="email" placeholder="Введите ваш email" name="email" required/>
+            </div>
+            <div>
+              <input type="password" placeholder="Введите ваш пароль" name="password" required/>
+            </div>
+            <div class="d-flex ">
+              <button>
+                войти
+              </button>
+            </div>
+          </form>
+          <a class="nav-link" href="reg">Впервые на нашем сайте?</a>
+        </div>
+        <div class="col-md-6">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </form>
+{% endblock %}
