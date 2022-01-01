@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<input id="phase" type="hidden" name="phase" value="{{ phase.id }}">
+
+{% if delta > 0 and win_time %}
+
+    <h3>Вторая фаза началась</h3>
+    <div>Вторая фаза завершится через <span id="time">*</span> минут</div>
+
+    <input id="delta" type="hidden" name="delta" value="{{ delta }}">
+
+    <br><br>
+
+    {% if phase.user == request.user %}
+
+        <a href="{% url 'reset' phase.id %}">Начать голосование заново</a>
+
+    {% endif %}
+
+{% else %}
+
+    <h3>Голосование завершено</h3>
+    <br><br>
+    <a href="{% url 'main' %}">Начать голосование заново</a>
+
+{% endif %}
+
+<br><br>
+
+{% if empty %}
+
+    Никто не проголосовал!
+
+{% elif win_time %}
+
+    Победило мероприятие: "{{ win_event }}" за {{ win_time }} единиц времени
+    <br><br>
+    Список участников мероприятия:
+    <br><br>
+    <input id="usr" type="hidden" name="usr" value="{{ win_user }}">
+    <span id="user">{% if not phase.active %}{{ win_user }}{% endif %}</span>
+
+    {% if request.user.username not in win_user and delta > 0 %}
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <input id="id_time" type="hidden" name="time" value="{{ win_time }}">
+            <input id="id_event" type="hidden" name="event" value="{{ win_event }}">
+            <br><br>
+            <button type="submit">Добавить себя в список</button>
+        </form>
+
+        <br><br>
+        <a href="{% url 'login' %}">Отказаться</a>
+
+    {% endif %}
+
+{% else %}
+
+    Ничья, проведите голосование заново
+
+{% endif %}
+
+<div style="max-width: 1660px;margin: auto;height: 1000px;" id="container"></div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>event</title>  
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+{% block content %}
+{% endblock content %}
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript" src="{% static "js/first.js" %}"></script>
+<script type="text/javascript" src="{% static "js/timer.js" %}"></script>
+<script type="text/javascript" src="{% static "js/main.js" %}"></script>
+<script type="text/javascript" src="{% static "js/reset.js" %}"></script>
+
+{% if phase.active %}
+    <script type="text/javascript" src="{% static "js/second.js" %}"></script>
+{% else %}
+    <script type="text/javascript" src="{% static "js/dashboard.js" %}"></script>
+{% endif %}

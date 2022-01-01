@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h3>Первая фаза началась</h3>
+
+<input id="poll_id" type="hidden" name="poll_id" value="{{ phase.id }}">
+
+{% if not user_vote %}
+
+    <form id="vote" action="" method="post">
+        {% csrf_token %}
+        {{ form.time.label_tag }}
+        {{ form.time }}
+        <br><br>
+        <div class="ui-widget">
+            <label for="id_event">Мероприятие:</label>
+            <input id="id_event" name="event">
+        </div>
+        <br><br>
+        <button type="submit">Голосовать</button>
+    </form>
+
+{% else %}
+
+    Вы проголосовали
+
+{% endif %}
+
+<br><br>
+<div>Первая фаза завершится через <span id="time">*</span></div>
+
+<input id="vot" type="hidden" name="vot" value="{{ phase.votes }}">
+<input id="delta" type="hidden" name="delta" value="{{ delta }}">
+<br><br>
+
+<div>Всего проголосовало: <span id="votes"></span> человек</div>
+<br><br>
+
+{% if phase.user == request.user %}
+
+    <a id="reset" href="{% url 'reset' phase.id %}">Начать голосование заново</a>
+
+{% endif %}
+{% endblock %}

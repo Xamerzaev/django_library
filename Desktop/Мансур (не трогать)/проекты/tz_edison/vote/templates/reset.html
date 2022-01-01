@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h3>Голосование остановлено</h3>
+<br>
+
+<input id="poll_id" type="hidden" name="poll_id" value="{{ poll_id }}">
+<input id="active" type="hidden" name="active" value="{{ active }}">
+<input id="user" type="hidden" name="user" value="{{ user }}">
+
+<a href="{% url 'main' %}">Начать заново</a>
+
+{% endblock %}
