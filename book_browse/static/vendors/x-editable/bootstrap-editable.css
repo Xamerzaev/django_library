@@ -1,30 +1,23 @@
-/*! X-editable - v1.5.1 
-* In-place editing with Twitter Bootstrap, jQuery UI or pure jQuery
-* http://github.com/vitalets/x-editable
-* Copyright (c) 2013 Vitaliy Potapov; Licensed MIT */
+
 .editableform {
-    margin-bottom: 0; /* overwrites bootstrap margin */
+    margin-bottom: 0; 
 }
 
 .editableform .control-group {
-    margin-bottom: 0; /* overwrites bootstrap margin */
-    white-space: nowrap; /* prevent wrapping buttons on new line */
-    line-height: 20px; /* overwriting bootstrap line-height. See #133 */
+    margin-bottom: 0; 
+    white-space: nowrap; 
+    line-height: 20px;
 }
 
-/* 
-  BS3 width:1005 for inputs breaks editable form in popup 
-  See: https://github.com/vitalets/x-editable/issues/393
-*/
 .editableform .form-control {
     width: auto;
 }
 
 .editable-buttons {
-   display: inline-block; /* should be inline to take effect of parent's white-space: nowrap */
+   display: inline-block; 
    vertical-align: top;
    margin-left: 7px;
-   /* inline-block emulation for IE7*/
+
    zoom: 1; 
    *display: inline;
 }
@@ -37,10 +30,9 @@
 
 .editable-input {
     vertical-align: top; 
-    display: inline-block; /* should be inline to take effect of parent's white-space: nowrap */
-    width: auto; /* bootstrap-responsive has width: 100% that breakes layout */
-    white-space: normal; /* reset white-space decalred in parent*/
-   /* display-inline emulation for IE7*/
+    display: inline-block; 
+    width: auto; 
+    white-space: normal; 
    zoom: 1; 
    *display: inline;   
 }
@@ -49,7 +41,7 @@
    margin-left: 7px; 
 }
 
-/*for jquery-ui buttons need set height to look more pretty*/
+
 .editable-buttons button.ui-button-icon-only {
    height: 24px; 
    width: 30px;
@@ -73,7 +65,7 @@
     white-space: normal;
 }
 
-/*add padding for jquery ui*/
+
 .editable-error-block.ui-state-error {
     padding: 3px;  
 }  
@@ -82,7 +74,6 @@
    color: red;  
 }
 
-/* ---- For specific types ---- */
 
 .editableform .editable-date {
     padding: 0; 
@@ -90,14 +81,12 @@
     float: left;
 }
 
-/* move datepicker icon to center of add-on button. See https://github.com/vitalets/x-editable/issues/183 */
 .editable-inline .add-on .icon-th {
    margin-top: 3px;
    margin-left: 1px; 
 }
 
 
-/* checklist vertical alignment */
 .editable-checklist label input[type="checkbox"], 
 .editable-checklist label span {
     vertical-align: middle;
@@ -108,13 +97,11 @@
     white-space: nowrap; 
 }
 
-/* set exact width of textarea to fit buttons toolbar */
 .editable-wysihtml5 {
     width: 566px; 
     height: 250px; 
 }
 
-/* clear button shown as link in date inputs */
 .editable-clear {
    clear: both;
    font-size: 0.9em;
@@ -122,7 +109,6 @@
    text-align: right;
 }
 
-/* IOS-style clear button for text inputs */
 .editable-clear-x {
    background: url('../img/clear.png') center center no-repeat;
    display: block;
@@ -146,25 +132,24 @@
    white-space: pre-wrap;
 }
 .editable-container.editable-popup {
-    max-width: none !important; /* without this rule poshytip/tooltip does not stretch */
+    max-width: none !important; 
 }  
 
 .editable-container.popover {
-    width: auto; /* without this rule popover does not stretch */
+    width: auto; 
 }
 
 .editable-container.editable-inline {
     display: inline-block; 
     vertical-align: middle;
     width: auto;
-    /* inline-block emulation for IE7*/
     zoom: 1; 
     *display: inline;    
 }
 
 .editable-container.ui-widget {
-   font-size: inherit;  /* jqueryui widget font 1.1em too big, overwrite it */
-   z-index: 9990; /* should be less than select2 dropdown z-index to close dropdown first when click */
+   font-size: inherit;  
+   z-index: 9990; 
 }
 .editable-click, 
 a.editable-click, 
@@ -184,7 +169,6 @@ a.editable-click.editable-disabled:hover {
 .editable-empty, .editable-empty:hover, .editable-empty:focus{
   font-style: italic; 
   color: #DD1144;  
-  /* border-bottom: none; */
   text-decoration: none;
 }
 
@@ -193,7 +177,7 @@ a.editable-click.editable-disabled:hover {
 }
 
 .editable-unsaved:after {
-/*    content: '*'*/
+
 }
 
 .editable-bg-transition {
@@ -204,7 +188,6 @@ a.editable-click.editable-disabled:hover {
   transition: background-color 1400ms ease-out;  
 }
 
-/*see https://github.com/vitalets/x-editable/issues/139 */
 .form-horizontal .editable
 { 
     padding-top: 5px;
@@ -212,24 +195,12 @@ a.editable-click.editable-disabled:hover {
 }
 
 
-/*!
- * Datepicker for Bootstrap
- *
- * Copyright 2012 Stefan Petre
- * Improvements by Andrew Rowls
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- */
 .datepicker {
   padding: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
   direction: ltr;
-  /*.dow {
-		border-top: 1px solid #ddd !important;
-	}*/
 
 }
 .datepicker-inline {
