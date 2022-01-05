@@ -30,9 +30,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = look_folder_tree(STATIC_ROOT)
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Quick-start development settings - unsuitable for production
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 root = environ.Path(__file__) - 3  # get root of the project
 env = environ.Env()
