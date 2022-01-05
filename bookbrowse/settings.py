@@ -16,20 +16,15 @@ import dj_database_url
 ROOT_PATH = os.path.dirname(__file__)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-def look_folder_tree(root): 
- result = ()  
- for dir_name, sub_dirs, file_names in os.walk(root):  
-     for sub_dir_name in sub_dirs:  result += (os.path.join(dir_name, sub_dir_name),)  
- return result # Django settings for project.
-
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Extra lookup directories for collectstatic to find static files
-STATICFILES_DIRS = look_folder_tree(STATIC_ROOT)
-# Quick-start development settings - unsuitable for production
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)# Quick-start development settings - unsuitable for production
 
 root = environ.Path(__file__) - 3  # get root of the project
 env = environ.Env()
