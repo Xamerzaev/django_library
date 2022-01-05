@@ -16,13 +16,12 @@ import dj_database_url
 ROOT_PATH = os.path.dirname(__file__)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
 def look_folder_tree(root): 
  result = ()  
  for dir_name, sub_dirs, file_names in os.walk(root):  
      for sub_dir_name in sub_dirs:  result += (os.path.join(dir_name, sub_dir_name),)  
  return result # Django settings for project.
+
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 
 STATIC_URL = '/static/'
@@ -65,6 +64,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'accounts.apps.AccountsConfig',
     'book_browse',
+    'whitenoise.runserver_nostatic',
     
 ]
 
