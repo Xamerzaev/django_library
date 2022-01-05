@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+
+<div class="col-md-6 grid-margin transparent">
+  <div class="row">
+    <div class="col-md-6 mb-4 stretch-card transparent">
+      <div class="card card-tale">
+        <div class="card-body">
+          <p class="mb-4">Войдите в свою учетную запись!</p>
+          <p class="fs-30 mb-2">  <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Войти</button>
+          </form></p>
+        </div>
+      </div>
+    </div>
+{% endblock %}

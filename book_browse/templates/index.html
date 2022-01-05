@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-md-12 grid-margin">
+          <div class="row">
+
+            <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+              {% if user.is_authenticated %}
+              <h3 class="font-weight-bold">Добро пожаловать, {{ user.username }}!</h3>
+              {% else %}
+              <h3 class="font-weight-bold">Войдите в свою учетную запись!</h3>
+              {% endif %}
+              <h6 class="font-weight-normal mb-0">Универсальная библиотека <span class="text-primary">- для универсальных людей!</span></h6>
+            </div>
+            <div class="col-12 col-xl-4">
+             <div class="justify-content-end d-flex">
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card-people mt-auto">
+              <img src="{% static 'images/dashboard/kniga.jpg'%}" alt="kniga">
+            </div>
+        </div>
+
+        <div class="col-md-6 grid-margin transparent">
+          <div class="row">
+            <div class="col-md-6 mb-4 stretch-card transparent">
+              <div class="card card-tale">
+                <div class="card-body">
+                  <p class="mb-4">Всего книг</p>
+                  <p class="fs-30 mb-2">{{ num_books }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4 stretch-card transparent">
+              <div class="card card-dark-blue">
+                <div class="card-body">
+                  <p class="mb-4">Книг в библиотеке</p>
+                  <p class="fs-30 mb-2">{{ num_instances }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+              <div class="card card-light-blue">
+                <div class="card-body">
+                  <p class="mb-4">Свободных книг</p>
+                  <p class="fs-30 mb-2">{{ num_instances_available }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 stretch-card transparent">
+              <div class="card card-light-danger">
+                <div class="card-body">
+                  <p class="mb-4">Авторы</p>
+                  <p class="fs-30 mb-2">{{ num_authors }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 grid-margin transparent">
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-tale">
+              <div class="input-group">
+                <form class="input-group" action="{% url 'books' %}" method="GET">
+                  {% csrf_token %}
+                  <div class="field">
+                  {{ form.search }}
+                  <button class="icon-search" aria-label="Search"> </button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+  
+      <div class="row">
+        <div class="col-md-7 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-title mb-4">ВСЕМИРНО ИЗВЕСТНЫЕ ПИСАТЕЛИ </p>
+              <div class="table-responsive">
+                <table class="table table-striped table-borderless">
+                  <thead>
+                    <tr>
+                      <th>Имя_Фамилия</th>
+                      <th>Книги</th>
+                      <th>Дата рождения</th>
+                      <th>Страна</th>
+                    </tr>  
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Федор Достоевский</td>
+                      <td class="font-weight-bold">17</td>
+                      <td>30 октября 1821</td>
+                      <td class="font-weight-medium"><div class="badge badge-success">Россия</div></td>
+                    </tr>
+                    <tr>
+                      <td>Михаил Булгаков</td>
+                      <td class="font-weight-bold">16</td>
+                      <td>3 мая 1891</td>
+                      <td class="font-weight-medium"><div class="badge badge-success">Россия</div></td>
+                    </tr>
+                    <tr>
+                      <td>Александр Пушкин</td>
+                      <td class="font-weight-bold">23</td>
+                      <td>6 июня 1799</td>
+                      <td class="font-weight-medium"><div class="badge badge-success">Россия</div></td>
+                    </tr>
+                    <tr>
+                      <td>Лев Толстой</td>
+                      <td class="font-weight-bold">37</td>
+                      <td>28 августа 1828</td>
+                      <td class="font-weight-medium"><div class="badge badge-success">Россия</div></td>
+                    </tr>
+                    <tr>
+                      <td>Даниель Дефо</td>
+                      <td class="font-weight-bold">1</td>
+                      <td>около 1660</td>
+                      <td class="font-weight-medium"><div class="badge badge-success">Англия</div></td>
+                    </tr>
+                    <tr>
+                      <td>Иван Ефремов</td>
+                      <td class="font-weight-bold">7</td>
+                      <td>22 апреля 1908</td>
+                      <td class="font-weight-medium"><div class="badge badge-success">Россия</div></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Мои заметки</h4>
+                                <div class="list-wrapper pt-2">
+                                    <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                                    </ul>
+              </div>
+              <div class="add-items d-flex mb-0 mt-2">
+                                    <input type="text" class="form-control todo-list-input"  placeholder="Добавить...">
+                                    <button class="add btn btn-icon text-primary todo-list-add-btn bg-transparent"><i class="icon-circle-plus"></i></button>
+                                </div>
+                            </div>
+                        </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+
+{% endblock %}
