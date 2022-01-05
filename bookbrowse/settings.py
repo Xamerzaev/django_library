@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import environ
+import django_on_heroku
+import dj_database_url
 
 ROOT_PATH = os.path.dirname(__file__)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -154,7 +156,7 @@ LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 SIGNUP_REDIRECT_URL = 'index'
 
-import dj-database-url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
-db_from_env = dj-database-url.config()
-DATABASE['default'].update(db_from_env)
+django_on_heroku.settings(locals())
