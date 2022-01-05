@@ -28,12 +28,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Extra lookup directories for collectstatic to find static files
-STATICFILES_DIRS = (
-    ('application', os.path.join(STATIC_ROOT, 'application', 'build')),
-    ('images', os.path.join(STATIC_ROOT, 'application', 'images')),
-    ('fonts', os.path.join(STATIC_ROOT, 'application', 'fonts'))
-)# Quick-start development settings - unsuitable for production
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATICFILES_DIRS = look_folder_tree(STATIC_ROOT)
+# Quick-start development settings - unsuitable for production
 
 root = environ.Path(__file__) - 3  # get root of the project
 env = environ.Env()
