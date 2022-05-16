@@ -23,10 +23,9 @@ def look_folder_tree(root):
 
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 
-STATIC_HOST = os.environ.get("DJANGO_STATIC_HOST", "")
-STATIC_URL = STATIC_HOST + "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 # Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = look_folder_tree(STATIC_ROOT)
 # Quick-start development settings - unsuitable for production
