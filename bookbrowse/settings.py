@@ -25,20 +25,14 @@ PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
-# Extra lookup directories for collectstatic to find static files
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 STATICFILES_DIRS = look_folder_tree(STATIC_ROOT)
-# Quick-start development settings - unsuitable for production
 
 root = environ.Path(__file__) - 3  # get root of the project
 env = environ.Env()
 env.read_env()  # reading .env file
 
 SITE_ROOT = root()
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str('SECRET_KEY')
