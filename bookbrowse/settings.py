@@ -41,8 +41,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=True)
 
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['mahalibrary.herokuapp.com'] 
 
 # Application definition
 
@@ -103,6 +102,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 
 # Password validation
