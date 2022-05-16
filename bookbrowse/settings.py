@@ -25,7 +25,7 @@ PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 # Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = look_folder_tree(STATIC_ROOT)
 # Quick-start development settings - unsuitable for production
