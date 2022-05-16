@@ -6,4 +6,4 @@
 ### Запуск программы
 Для запуска программы используйте команду 'python .\manage.py runserver'
 ### Демка
-https://manslibrary.herokuapp.com/
+https://mahalibrary.herokuapp.com/
