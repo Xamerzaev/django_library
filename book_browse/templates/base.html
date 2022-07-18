@@ -27,8 +27,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo mr-5" href="{% url 'index'%}"><img src="{% static 'images/logo.svg'%}" class="mr-2" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="{% url 'index'%}"><img src="{% static 'images/logo-mini.svg'%}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo mr-5" href="{% url 'index'%}"><img src="" class="mr-2" alt="mahamerz"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{% url 'index'%}"><img src="" alt="MH"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -46,12 +46,11 @@
               </div>
             </form>
             </div>
-              
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+            <a class="nav-link dropdown-toggle" href="{% url 'login' %}" data-toggle="dropdown" id="profileDropdown">
               <img src="{% static 'images/faces/face28.jpg'%}" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -152,9 +151,9 @@
       <div style="margin-left:20px;margin-top:20px">
       <footer class="footer">
         <div class="d-sm-flex justify-content-center justify-content-sm-between">
-          <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">mahamerz © 2021</span>
-    
         </div>
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">mahamerz © 2021</span>
+
       </footer> 
       <!-- partial -->
     </div>

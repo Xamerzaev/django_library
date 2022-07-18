@@ -11,21 +11,25 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import environ
 import django_on_heroku
+import dj_database_url
+
 
 ROOT_PATH = os.path.dirname(__file__)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-def look_folder_tree(root): 
- result = ()  
- for dir_name, sub_dirs, file_names in os.walk(root):  
-     for sub_dir_name in sub_dirs:  result += (os.path.join(dir_name, sub_dir_name),)  
- return result # Django settings for project.
 
-PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
+def look_folder_tree(root):
+    result = ()
+    for dir_name, sub_dirs, file_names in os.walk(root):
+        for sub_dir_name in sub_dirs:  result += (os.path.join(dir_name, sub_dir_name),)
+    return result  # Django settings for project.
+
+
+PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_DIRS = look_folder_tree(STATIC_ROOT)
 
 root = environ.Path(__file__) - 3  # get root of the project
@@ -41,7 +45,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=True)
 
 
-ALLOWED_HOSTS = ['mahalibrary.herokuapp.com'] 
+ALLOWED_HOSTS = ['mahalibrary.herokuapp.com']
 
 # Application definition
 
@@ -141,13 +145,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 SIGNUP_REDIRECT_URL = 'index'
 
-import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
