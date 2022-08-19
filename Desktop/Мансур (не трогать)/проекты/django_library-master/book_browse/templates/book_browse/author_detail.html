@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div style="margin-left:20px;margin-top:20px">
+  <div class="row">
+    <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+      <div class="card card-tale">
+        <div class="card-body">
+          <h3 class="mb-4">{{ author.first_name }} {{ author.last_name }} </h3>
+          <p class="fs-30 mb-2">  
+          {% if author.date_of_birth is none %}
+          <p><strong>Дата Рождения:</strong>Неизвестно</p>
+          {% else %}
+          <p><strong>Дата Рождения:</strong> {{ author.date_of_birth }}</p>
+          {% endif %}     
+          {% if author.date_of_death is none %}
+          <p><strong>Дата Смерти:</strong>Жив(а)</p>
+          {% else %}
+          <p><strong>Дата Смерти:</strong> {{ author.date_of_death }}</p>
+          {% endif %}        
+           </p>
+        </div>
+      </div>
+    </div>
+
+          <div class="col-md-6 mb-4 stretch-card transparent">
+            <div class="card card-dark-blue">
+              <div class="card-body">
+                <p class="mb-4">Книги данного автора:</p>
+                <p class="fs-30 mb-2"> 
+                  {% if author.book_set.all%}     
+                  <ul>
+                    {% for book in author.book_set.all %}
+                      <li>
+                        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+                        <p>{{book.summary}}</p>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  {% else %}
+                    <p>К сожалению, книг в нашей библиотеке не нашлось :(</p>
+              </div>
+            </div>
+          </div>
+{% endif %}
+{% endblock %} 
