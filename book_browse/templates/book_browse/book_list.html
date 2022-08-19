@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+
+<div class="col-md-6 grid-margin transparent">
+  <div class="row">
+    <div class="col-md-6 mb-4 stretch-card transparent">
+      <div class="card card-dark-blue">
+        <div class="card-body">
+          <p class="mb-4">Книги в нашей библиотеке</p>
+          <p class="fs-30 mb-2"> {% if book_list %}
+            <ul>
+              {% for book in book_list %}
+                <li>
+                  <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
+                </li>
+              {% endfor %}
+            </ul>
+            {% else %}
+              <p>К сожалению, книг в нашей библиотеке не нашлось :(</p>
+            {% endif %}</p>
+        </div>
+      </div>
+    </div>
+{% endblock %}
