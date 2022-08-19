@@ -1,2 +1,0 @@
-# colorlib-template
-
